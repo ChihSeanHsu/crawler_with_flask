@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome</title>
+</head>
+<body>
+  <select name="web" id="web">
+    {% for web in web_list %}
+    <option >{{ web }}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  <label for="search">Keyword</label>
+  <input id="search" type="text">
+  <br><br>
+  <button onclick="onSearch()">Search</button>
+</body>
+
+<script>
+  const onSearch = () => {
+    const web = document.querySelector('#web').value;
+    const query = document.querySelector('#search').value;
+    window.location = `http://{{ request.host }}/search/${web}/?query=${query}`
+  }
+</script>
+
+</html>
